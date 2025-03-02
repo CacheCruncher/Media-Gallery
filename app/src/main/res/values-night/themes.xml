@@ -1,7 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MediaGallery" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Theme.MediaGallery" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_color</item>
+        <item name="colorSecondary">@color/accent_color</item>
+        <item name="android:colorBackground">@color/background_color</item>
+        <item name="colorSurface">@color/light_gray</item>
+        <item name="colorError">@color/red</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="buttonStyle">@style/Button.MediaGallery.AlertDialog</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:divider">@color/divider_color</item>
+    </style>
+
+    <style name="AlertDialogTheme.MediaGallery" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/Button.MediaGallery.AlertDialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Button.MediaGallery.AlertDialog</item>
+    </style>
+
+    <style name="Button.MediaGallery.AlertDialog" parent="Widget.AppCompat.Button">
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

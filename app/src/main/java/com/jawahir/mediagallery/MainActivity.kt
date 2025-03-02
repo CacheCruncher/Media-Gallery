@@ -1,15 +1,88 @@
 package com.jawahir.mediagallery
 
+import android.Manifest
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
+import com.jawahir.mediagallery.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        requestPermission()
+        binding.permissionReqButton.setOnClickListener {
+            openAppSettings()
+        }
+    }
+
+    private fun requestPermission() {
+        val permissionsToRequest = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(
+                Manifest.permission.READ_MEDIA_IMAGES,
+                Manifest.permission.READ_MEDIA_VIDEO
+            )
+        } else {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        val permissionResultLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { perms ->
+            permissionsToRequest.forEach { permission ->
+                onPermissionResult(permission, perms[permission] == true)
+            }
+        }
+
+        permissionResultLauncher.launch(permissionsToRequest)
+    }
+
+    private fun onPermissionResult(permission: String, isGranted: Boolean) {
+        if (isGranted) {
+            initView()
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                showPermissionDialog()
+            }
+        }
+    }
+
+    private fun initView() {
+        with(binding) {
+            navHostFragment.isVisible = true
+            permissionReqButton.isVisible = false
+        }
+    }
+
+
+    private fun showPermissionDialog() {
+        AlertDialog.Builder(this, R.style.AlertDialogTheme_MediaGallery)
+            .setTitle(getString(R.string.media_permission_title))
+            .setMessage(getString(R.string.media_permission_description))
+            .setPositiveButton(getString(R.string.allow)) { _, _ -> requestPermission() }
+            .setNegativeButton(getString(R.string.cancel),null)
+            .setCancelable(false)
+            .show()
+
+    }
+
+    private fun openAppSettings() {
+        Intent(
+            ACTION_APPLICATION_DETAILS_SETTINGS,
+            Uri.fromParts("package", packageName, null)
+        ).also(::startActivity)
     }
 }
