@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <import type="com.jawahir.mediagallery.data.model.MediaType" />
+        <import type="com.jawahir.mediagallery.ui.uimodels.ContainerUIModel" />
         <import type="android.view.View" />
         <variable
             name="model"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:src="@drawable/gradient"
-            android:visibility="@{model.mediaType== MediaType.}"
+            android:visibility="@{model.containerType == ContainerUIModel.ALBUM?View.VISIBLE:View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,6 +49,8 @@
             android:maxLines="2"
             android:textColor="#fff"
             android:textSize="12sp"
+            android:text="@{model.mediaCount}"
+            android:visibility="@{model.containerType == ContainerUIModel.ALBUM?View.VISIBLE:View.GONE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Media Count: 3" />
@@ -63,6 +65,7 @@
             android:maxLines="2"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:text="@{model.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mediaThumbnailIv"
@@ -73,6 +76,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:adjustViewBounds="true"
+            android:visibility="@{ model.containerType == ContainerUIModel.VIDEO? View.VISIBLE:View.GONE }"
             app:layout_constraintBottom_toBottomOf="@id/mediaThumbnailIv"
             app:layout_constraintEnd_toEndOf="@id/mediaThumbnailIv"
             app:layout_constraintStart_toStartOf="@id/mediaThumbnailIv"

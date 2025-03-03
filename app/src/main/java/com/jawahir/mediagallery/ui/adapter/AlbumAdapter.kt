@@ -43,7 +43,7 @@ class AlbumViewHolder(
                 .error(R.drawable.ic_media_placeholder_image)
                 .into(mediaThumbnailIv)
 
-            displayNameTv.text = album.getName()
+            model = album
         }
     }
 

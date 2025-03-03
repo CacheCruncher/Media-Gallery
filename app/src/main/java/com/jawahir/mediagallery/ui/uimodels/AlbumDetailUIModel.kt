@@ -9,10 +9,8 @@ data class AlbumDetailUIModel(
 
     override fun getName() = mediaModels.getName()
 
-    override fun getMediaType() = mediaModels.getMediaType()
+    override fun getContainerType() = mediaModels.getContainerType()
 
-    override fun isAlbum() = false
-
-    override fun getMediaCount() = 1
+    override fun getMediaCount() = "1"
 }
 
