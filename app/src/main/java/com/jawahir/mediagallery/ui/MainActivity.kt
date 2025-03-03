@@ -1,4 +1,4 @@
-package com.jawahir.mediagallery
+package com.jawahir.mediagallery.ui
 
 import android.Manifest
 import android.content.Intent
@@ -13,9 +13,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
+import com.jawahir.mediagallery.R
 import com.jawahir.mediagallery.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         val allGranted = perms.all { it.value }
 
         if (allGranted && perms.isNotEmpty()) {
-            initView()
+            showNavHostsFragment()
         } else {
             val deniedPermissions = perms.filter { !it.value }.keys
             handleDeniedPermissions(deniedPermissions.toList())
@@ -82,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initView() {
+    private fun showNavHostsFragment() {
         with(binding) {
             navHostFragment.isVisible = true
             permissionReqButton.isVisible = false

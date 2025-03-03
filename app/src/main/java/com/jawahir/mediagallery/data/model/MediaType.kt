@@ -1,6 +1,10 @@
 package com.jawahir.multimediagallery.database.models
 
-enum class MediaType{
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+enum class MediaType:Parcelable{
     VIDEO,
     IMAGE
 }

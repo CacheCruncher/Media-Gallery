@@ -38,12 +38,12 @@ class AlbumViewHolder(
     fun bind(album: AlbumUIModel) {
         binding.apply {
             Glide.with(itemView)
-                .load(album.albumThumbnailUri)
+                .load(album.getUri())
                 .centerCrop()
                 .error(R.drawable.ic_media_placeholder_image)
                 .into(mediaThumbnailIv)
 
-            displayNameTv.text = album.albumName
+            displayNameTv.text = album.getName()
         }
     }
 
@@ -62,7 +62,7 @@ class AlbumViewHolder(
 class ImageFolderComparator : DiffUtil.ItemCallback<AlbumUIModel>() {
 
     override fun areItemsTheSame(oldItem: AlbumUIModel, newItem: AlbumUIModel) =
-        oldItem.albumId == newItem.albumId
+        oldItem.getId() == newItem.getId()
 
     override fun areContentsTheSame(oldItem: AlbumUIModel, newItem: AlbumUIModel) =
         oldItem == newItem

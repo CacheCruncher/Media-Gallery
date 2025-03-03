@@ -1,26 +1,33 @@
 package com.jawahir.mediagallery.ui.uimodels
 
 import android.net.Uri
+import android.os.Parcelable
+import com.jawahir.multimediagallery.database.models.AlbumModel
 import com.jawahir.multimediagallery.database.models.MediaType
+import kotlinx.parcelize.Parcelize
 
 interface MediaModels {
     fun getId(): Long
     fun getUri(): Uri
     fun getName(): String
+    fun getMediaType(): MediaType
+    fun isAlbum(): Boolean
+    fun getMediaCount(): Int
 }
 
-
+@Parcelize
 data class AlbumUIModel(
-    val albumId: Long,
-    val albumName: String,
-    val albumThumbnailUri: Uri,
-    val albumMediaType: MediaType,
-    var albumMediaCount: Int
-) : MediaModels {
-    override fun getId() = albumId
+    private val albumModel: AlbumModel
+) : MediaModels, Parcelable {
+    override fun getId() = albumModel.albumId
 
-    override fun getUri() = albumThumbnailUri
+    override fun getUri() = albumModel.albumThumbnailUri
 
-    override fun getName() = albumName
+    override fun getName() = albumModel.albumName
 
+    override fun getMediaType() = albumModel.albumMediaType
+
+    override fun isAlbum() = true
+
+    override fun getMediaCount() = albumModel.albumMediaCount
 }

@@ -15,5 +15,10 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.jawahir.mediagallery.ui.AlbumDetailFragment"
-        android:label="AlbumDetailFragment" />
+        android:label="AlbumDetailFragment">
+        <argument
+            android:name="albumModel"
+            app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumUIModel" />
+
+    </fragment>
 </navigation>
