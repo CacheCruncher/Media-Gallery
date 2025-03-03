@@ -11,6 +11,8 @@ material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 navVersion = "2.8.8"
+hilt = "2.51.1"
+navigation = "2.8.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,8 +26,16 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+navigation_safe_args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
+hilt_gradle_plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt_compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android_library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlin"}
+navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation"}
+hilt-android = { id = "dagger.hilt.android.plugin", version.ref = "hilt"}
