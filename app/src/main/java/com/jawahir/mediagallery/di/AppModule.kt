@@ -1,8 +1,8 @@
 package com.jawahir.mediagallery.di
 
 import android.content.Context
-import com.jawahir.multimediagallery.database.repository.MediaRepository
-import com.jawahir.multimediagallery.database.repository.MediaRepositoryImpl
+import com.jawahir.mediagallery.data.repository.MediaRepository
+import com.jawahir.mediagallery.data.repository.MediaRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMediaRepository(@ApplicationContext app: Context):MediaRepository = MediaRepositoryImpl(app)
+    fun provideMediaRepository(@ApplicationContext app: Context): MediaRepository = MediaRepositoryImpl(app)
 }

@@ -1,19 +1,20 @@
-package com.jawahir.multimediagallery.database.repository
+package com.jawahir.mediagallery.data.repository
 
 import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
 import com.jawahir.mediagallery.data.MediaResult
-import com.jawahir.multimediagallery.database.models.AlbumModel
-import com.jawahir.multimediagallery.database.models.MediaModel
-import com.jawahir.multimediagallery.database.models.MediaType
+import com.jawahir.mediagallery.data.model.AlbumModel
+import com.jawahir.mediagallery.data.model.MediaModel
+import com.jawahir.mediagallery.data.model.MediaType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val context: Context) : MediaRepository {
+class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val context: Context) :
+    MediaRepository {
     override fun getImageAlbums(): Flow<MediaResult<List<AlbumModel>>> = flow {
         emit(MediaResult.Loading())
         try {

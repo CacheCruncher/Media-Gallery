@@ -1,4 +1,4 @@
-package com.jawahir.multimediagallery.database.models
+package com.jawahir.mediagallery.data.model
 
 import android.net.Uri
 

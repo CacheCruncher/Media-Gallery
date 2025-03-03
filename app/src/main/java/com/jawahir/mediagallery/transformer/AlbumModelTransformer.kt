@@ -2,7 +2,7 @@ package com.jawahir.mediagallery.transformer
 
 import com.jawahir.mediagallery.data.MediaResult
 import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
-import com.jawahir.multimediagallery.database.repository.MediaRepository
+import com.jawahir.mediagallery.data.repository.MediaRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

@@ -2,8 +2,8 @@ package com.jawahir.mediagallery.ui.uimodels
 
 import android.net.Uri
 import android.os.Parcelable
-import com.jawahir.multimediagallery.database.models.AlbumModel
-import com.jawahir.multimediagallery.database.models.MediaType
+import com.jawahir.mediagallery.data.model.AlbumModel
+import com.jawahir.mediagallery.data.model.MediaType
 import kotlinx.parcelize.Parcelize
 
 interface MediaModels {

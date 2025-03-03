@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:clickable="true"
-    android:focusable="true"
-    android:padding="8dp">
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/mediaThumbnailIv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:foreground="?attr/selectableItemBackground"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MediaItem.Thumbnail"
-        tools:src="@tools:sample/backgrounds/scenic" />
+<layout>
+    <data>
+        <import type="com.jawahir.mediagallery.data.model.MediaType" />
+        <import type="android.view.View" />
+        <variable
+            name="model"
+            type="com.jawahir.mediagallery.ui.uimodels.MediaModels" />
+    </data>
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:src="@drawable/gradient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mediaCountTv"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="#fff"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Media Count: 3" />
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/displayNameTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:gravity="start"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaThumbnailIv"
-        tools:text="Album display name"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/mediaThumbnailIv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MediaItem.Thumbnail"
+            tools:src="@tools:sample/backgrounds/scenic" />
 
-    <ImageView
-        android:id="@+id/videoIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toBottomOf="@id/mediaThumbnailIv"
-        app:layout_constraintEnd_toEndOf="@id/mediaThumbnailIv"
-        app:layout_constraintStart_toStartOf="@id/mediaThumbnailIv"
-        app:layout_constraintTop_toTopOf="@id/mediaThumbnailIv"
-        app:srcCompat="@drawable/ic_play_icon" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/gradiantIv"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/gradient"
+            android:visibility="@{model.mediaType== MediaType.}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mediaCountTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Media Count: 3" />
+
+        <TextView
+            android:id="@+id/displayNameTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mediaThumbnailIv"
+            tools:text="Album display name" />
+
+        <ImageView
+            android:id="@+id/videoIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@id/mediaThumbnailIv"
+            app:layout_constraintEnd_toEndOf="@id/mediaThumbnailIv"
+            app:layout_constraintStart_toStartOf="@id/mediaThumbnailIv"
+            app:layout_constraintTop_toTopOf="@id/mediaThumbnailIv"
+            app:srcCompat="@drawable/ic_play_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

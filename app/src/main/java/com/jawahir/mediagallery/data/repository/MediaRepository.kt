@@ -1,8 +1,8 @@
-package com.jawahir.multimediagallery.database.repository
+package com.jawahir.mediagallery.data.repository
 
 import com.jawahir.mediagallery.data.MediaResult
-import com.jawahir.multimediagallery.database.models.AlbumModel
-import com.jawahir.multimediagallery.database.models.MediaModel
+import com.jawahir.mediagallery.data.model.AlbumModel
+import com.jawahir.mediagallery.data.model.MediaModel
 import kotlinx.coroutines.flow.Flow
 
 interface MediaRepository {
