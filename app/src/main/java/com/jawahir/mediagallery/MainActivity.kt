@@ -29,13 +29,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        binding.permissionReqButton.setOnClickListener {
-            openAppSettings()
-        }
         permissionResultLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { perms ->
             handlePermissionResults(perms)
+        }
+
+        binding.permissionReqButton.setOnClickListener {
+            openAppSettings()
         }
 
         permissionRequestLauncher()
