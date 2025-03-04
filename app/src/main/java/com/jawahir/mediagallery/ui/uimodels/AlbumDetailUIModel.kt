@@ -1,11 +1,14 @@
 package com.jawahir.mediagallery.ui.uimodels
 
+import android.os.Parcelable
 import com.jawahir.mediagallery.data.model.MediaModel
 import com.jawahir.mediagallery.data.model.MediaType
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class AlbumDetailUIModel(
     private val mediaModels: MediaModel
-) : MediaModels {
+) : MediaModels,Parcelable {
     override fun getId() = mediaModels.mediaLastModified
 
     override fun getUri() = mediaModels.mediaUri

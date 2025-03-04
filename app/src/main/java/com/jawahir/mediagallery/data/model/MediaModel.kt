@@ -1,7 +1,10 @@
 package com.jawahir.mediagallery.data.model
 
 import android.net.Uri
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class MediaModel(
     val id:Long,
     val mediaTitle: String,
@@ -10,4 +13,4 @@ data class MediaModel(
     val mediaUri: Uri,
     val mediaThumbnailUri: Uri? = null,
     val mediaType: MediaType
-)
+):Parcelable

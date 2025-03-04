@@ -12,6 +12,7 @@
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.jawahir.mediagallery.ui.feature.albumsDetails.AlbumDetailFragment"
@@ -19,6 +20,17 @@
         <argument
             android:name="albumUIModel"
             app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumUIModel" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="com.jawahir.mediagallery.ui.feature.imageviewer.ImageViewerFragment"
+        android:label="ImageViewerFragment">
+        <argument
+            android:name="albumDetailUIModel"
+            app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumDetailUIModel" />
     </fragment>
 </navigation>
