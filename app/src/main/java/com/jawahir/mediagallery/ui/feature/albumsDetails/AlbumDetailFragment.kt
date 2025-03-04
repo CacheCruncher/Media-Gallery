@@ -16,6 +16,7 @@ import com.jawahir.mediagallery.databinding.FragmentAlbumDetailBinding
 import com.jawahir.mediagallery.ui.adapter.AlbumAdapter
 import com.jawahir.mediagallery.ui.uimodels.AlbumDetailUIModel
 import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
+import com.jawahir.mediagallery.ui.uimodels.ContainerUIModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -37,8 +38,17 @@ class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
 
         val binding = FragmentAlbumDetailBinding.bind(view)
         val albumAdapter = AlbumAdapter { uiModel ->
-            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToImageViewerFragment(uiModel as AlbumDetailUIModel)
-            findNavController().navigate(action)
+            when(uiModel.getContainerType()){
+                ContainerUIModel.IMAGE -> {
+                    val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToImageViewerFragment(uiModel as AlbumDetailUIModel)
+                    findNavController().navigate(action)
+                }
+                else->{
+                    val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToVideoPlayerFragment(uiModel as AlbumDetailUIModel)
+                    findNavController().navigate(action)
+                }
+            }
+
         }
 
         binding.apply {

@@ -23,12 +23,23 @@
         <action
             android:id="@+id/action_albumDetailFragment_to_imageViewerFragment"
             app:destination="@id/imageViewerFragment" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/imageViewerFragment"
         android:name="com.jawahir.mediagallery.ui.feature.imageviewer.ImageViewerFragment"
         android:label="ImageViewerFragment">
+        <argument
+            android:name="albumDetailUIModel"
+            app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumDetailUIModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.jawahir.mediagallery.ui.feature.videoplayer.VideoPlayerFragment"
+        android:label="VideoPlayerFragment">
         <argument
             android:name="albumDetailUIModel"
             app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumDetailUIModel" />
