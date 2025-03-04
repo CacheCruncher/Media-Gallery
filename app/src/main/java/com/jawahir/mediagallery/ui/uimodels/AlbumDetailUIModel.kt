@@ -1,15 +1,21 @@
 package com.jawahir.mediagallery.ui.uimodels
 
+import com.jawahir.mediagallery.data.model.MediaModel
+import com.jawahir.mediagallery.data.model.MediaType
+
 data class AlbumDetailUIModel(
-    private val mediaModels: MediaModels
+    private val mediaModels: MediaModel
 ) : MediaModels {
-    override fun getId() = mediaModels.getId()
+    override fun getId() = mediaModels.mediaLastModified
 
-    override fun getUri() = mediaModels.getUri()
+    override fun getUri() = mediaModels.mediaUri
 
-    override fun getName() = mediaModels.getName()
+    override fun getName() = mediaModels.mediaName
 
-    override fun getContainerType() = mediaModels.getContainerType()
+    override fun getContainerType() =  when (mediaModels.mediaType) {
+        MediaType.IMAGE -> ContainerUIModel.IMAGE
+        MediaType.VIDEO -> ContainerUIModel.VIDEO
+    }
 
     override fun getMediaCount() = "1"
 }

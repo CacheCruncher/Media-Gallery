@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jawahir.mediagallery.R
 import com.jawahir.mediagallery.databinding.ItemAlbumBinding
-import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
+import com.jawahir.mediagallery.ui.uimodels.MediaModels
 
 class AlbumAdapter(
-    private val onItemClick: (AlbumUIModel) -> Unit
-) : ListAdapter<AlbumUIModel, AlbumViewHolder>(ImageFolderComparator()) {
+    private val onItemClick: (MediaModels) -> Unit
+) : ListAdapter<MediaModels, AlbumViewHolder>(ImageFolderComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AlbumViewHolder(binding, onItemClick = { position ->
@@ -35,7 +35,7 @@ class AlbumViewHolder(
     private val onItemClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(album: AlbumUIModel) {
+    fun bind(album: MediaModels) {
         binding.apply {
             Glide.with(itemView)
                 .load(album.getUri())
@@ -59,11 +59,11 @@ class AlbumViewHolder(
     }
 }
 
-class ImageFolderComparator : DiffUtil.ItemCallback<AlbumUIModel>() {
+class ImageFolderComparator : DiffUtil.ItemCallback<MediaModels>() {
 
-    override fun areItemsTheSame(oldItem: AlbumUIModel, newItem: AlbumUIModel) =
+    override fun areItemsTheSame(oldItem: MediaModels, newItem: MediaModels) =
         oldItem.getId() == newItem.getId()
 
-    override fun areContentsTheSame(oldItem: AlbumUIModel, newItem: AlbumUIModel) =
-        oldItem == newItem
+    override fun areContentsTheSame(oldItem: MediaModels, newItem: MediaModels) =
+        oldItem.getUri() == newItem.getUri()
 }

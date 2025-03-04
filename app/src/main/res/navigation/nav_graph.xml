@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.jawahir.mediagallery.ui.AlbumFragment"
+        android:name="com.jawahir.mediagallery.ui.feature.albums.AlbumFragment"
         android:label="AlbumFragment" >
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
@@ -14,10 +14,10 @@
     </fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
-        android:name="com.jawahir.mediagallery.ui.AlbumDetailFragment"
+        android:name="com.jawahir.mediagallery.ui.feature.albumsDetails.AlbumDetailFragment"
         android:label="AlbumDetailFragment">
         <argument
-            android:name="albumModel"
+            android:name="albumUIModel"
             app:argType="com.jawahir.mediagallery.ui.uimodels.AlbumUIModel" />
 
     </fragment>

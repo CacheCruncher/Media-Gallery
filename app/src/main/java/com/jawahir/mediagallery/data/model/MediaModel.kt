@@ -3,6 +3,7 @@ package com.jawahir.mediagallery.data.model
 import android.net.Uri
 
 data class MediaModel(
+    val id:Long,
     val mediaTitle: String,
     val mediaName: String,
     val mediaLastModified: Long,

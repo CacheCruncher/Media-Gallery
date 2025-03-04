@@ -1,10 +1,10 @@
-package com.jawahir.mediagallery.ui
+package com.jawahir.mediagallery.ui.feature.albumsDetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jawahir.mediagallery.data.MediaResult
-import com.jawahir.mediagallery.transformer.AlbumModelTransformer
-import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
+import com.jawahir.mediagallery.transformer.AlbumDetailModelTransformer
+import com.jawahir.mediagallery.ui.uimodels.AlbumDetailUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,19 +13,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AlbumViewModel @Inject constructor(private val transformer: AlbumModelTransformer) : ViewModel() {
-
-    private val _state: MutableStateFlow<MediaResult<List<AlbumUIModel>>> =
+class AlbumDetailViewModel @Inject constructor(private val transformer: AlbumDetailModelTransformer) :
+    ViewModel() {
+    private val _state: MutableStateFlow<MediaResult<List<AlbumDetailUIModel>>> =
         MutableStateFlow(MediaResult.Loading(null))
     val state = _state.asStateFlow()
 
-    init {
+    fun onStart(albumId: Long) {
         viewModelScope.launch {
-            transformer.getAllAlbums().collectLatest {
+            transformer.getMediaByAlbum(albumId).collectLatest {
                 _state.emit(it)
             }
-
         }
     }
-
 }

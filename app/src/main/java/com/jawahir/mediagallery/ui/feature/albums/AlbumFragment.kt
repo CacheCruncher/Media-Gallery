@@ -1,4 +1,4 @@
-package com.jawahir.mediagallery.ui
+package com.jawahir.mediagallery.ui.feature.albums
 
 import android.os.Bundle
 import android.view.View
@@ -14,6 +14,7 @@ import com.jawahir.mediagallery.R
 import com.jawahir.mediagallery.data.MediaResult
 import com.jawahir.mediagallery.databinding.FragmentAlbumBinding
 import com.jawahir.mediagallery.ui.adapter.AlbumAdapter
+import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -26,11 +27,9 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentAlbumBinding.bind(view)
-        val albumAdapter = AlbumAdapter { albumUIModel ->
-            val bundle = Bundle().apply {
-                putParcelable("albumUIModel", albumUIModel)
-            }
-            findNavController().navigate(R.id.action_albumFragment_to_albumDetailFragment,bundle)
+        val albumAdapter = AlbumAdapter { mediaUIModel ->
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(mediaUIModel as AlbumUIModel)
+            findNavController().navigate(action)
         }
 
         binding.apply {
