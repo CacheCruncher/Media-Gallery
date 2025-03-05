@@ -11,4 +11,9 @@
     <string name="retry">Retry</string>
     <string name="no_items_found">No items found</string>
     <string name="no_items_found_image">No items found image</string>
+    <string name="back">Back</string>
+    <string name="album">Albums</string>
+    <string name="album_details">Album Details</string>
+    <string name="photo">Photo</string>
+    <string name="video">Video</string>
 </resources>

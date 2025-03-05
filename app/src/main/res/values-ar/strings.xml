@@ -9,6 +9,11 @@
     <string name="permission_info">مطلوب إذن الصور ومقاطع الفيديو لاستخدام هذا التطبيق.</string>
     <string name="permission_settings_info">يرجى تمكين الأذونات من الإعدادات.</string>
     <string name="retry">إعادة المحاولة</string>
-    <string name="no_items_found">No items found</string>
-    <string name="no_items_found_image">No items found image</string>
+    <string name="no_items_found">لم يتم العثور على عناصر</string>
+    <string name="no_items_found_image">صورة لعدم العثور على عناصر</string>
+    <string name="back">رجوع</string>
+    <string name="album">الألبومات</string>
+    <string name="album_details">تفاصيل الألبوم</string>
+    <string name="photo">صورة</string>
+    <string name="video">فيديو</string>
 </resources>
