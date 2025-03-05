@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">MediaGallery</string>
-    <string name="media_permission_title">Media Access Required</string>
-    <string name="media_permission_description">The Application need media read permission to display in the gallery. </string>
     <string name="go_to_settings">Go to settings</string>
     <string name="allow">Allow</string>
     <string name="cancel">Cancel</string>
     <string name="request_for_permissions">Request for Permissions</string>
-
+    <string name="media_permission_title">Media Permissions</string>
+    <string name="media_permission_description">This app needs access to your media to display photos and videos.</string>
+    <string name="permission_info">Photos and Videos permissions are required to use this app.</string>
+    <string name="permission_settings_info">Please enable permissions in settings.</string>
+    <string name="retry">Retry</string>
+    <string name="no_items_found">No items found</string>
+    <string name="no_items_found_image">No items found image</string>
 </resources>

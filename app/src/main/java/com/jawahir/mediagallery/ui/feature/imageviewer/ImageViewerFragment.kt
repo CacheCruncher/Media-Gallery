@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jawahir.mediagallery.R
 import com.jawahir.mediagallery.databinding.FragmentImageViewerBinding
 
@@ -21,7 +22,8 @@ class ImageViewerFragment : Fragment(R.layout.fragment_image_viewer) {
             Glide.with(view)
                 .load(albumDetailUIModel.getUri())
                 .fitCenter()
-                .error(R.drawable.ic_media_placeholder_image)
+                .placeholder(R.drawable.ic_media_placeholder_image)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(mediaIV)
         }
     }

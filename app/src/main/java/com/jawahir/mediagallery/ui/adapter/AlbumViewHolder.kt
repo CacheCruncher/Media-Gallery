@@ -2,6 +2,7 @@ package com.jawahir.mediagallery.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jawahir.mediagallery.R
 import com.jawahir.mediagallery.databinding.ItemAlbumBinding
 import com.jawahir.mediagallery.ui.uimodels.MediaModels
@@ -16,7 +17,8 @@ class AlbumViewHolder(
             Glide.with(itemView)
                 .load(album.getUri())
                 .centerCrop()
-                .error(R.drawable.ic_media_placeholder_image)
+                .placeholder(R.drawable.ic_media_placeholder_image)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(mediaThumbnailIv)
 
             model = album

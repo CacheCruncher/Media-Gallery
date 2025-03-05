@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">MediaGallery</string>
-    <string name="media_permission_title">Media Access Required</string>
-    <string name="media_permission_description">The Application need media read permission to display in the gallery. </string>
-    <string name="go_to_settings">Go to settings</string>
-    <string name="allow">Allow</string>
-    <string name="cancel">Cancel</string>
-    <string name="request_for_permissions">Request for Permissions</string>
+    <string name="app_name">معرض الوسائط</string>
+    <string name="go_to_settings">اذهب إلى الإعدادات</string>
+    <string name="allow">سماح</string>
+    <string name="cancel">إلغاء</string>
+    <string name="request_for_permissions">طلب الأذونات</string>
+    <string name="media_permission_title">أذونات الوسائط</string>
+    <string name="media_permission_description">يحتاج هذا التطبيق إلى الوصول إلى وسائطك لعرض الصور ومقاطع الفيديو.</string>
+    <string name="permission_info">مطلوب إذن الصور ومقاطع الفيديو لاستخدام هذا التطبيق.</string>
+    <string name="permission_settings_info">يرجى تمكين الأذونات من الإعدادات.</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="no_items_found">No items found</string>
+    <string name="no_items_found_image">No items found image</string>
 </resources>
