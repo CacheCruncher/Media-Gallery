@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.2"
+coreSplashscreen = "1.0.1"
 glide = "4.16.0"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -16,6 +17,7 @@ navigation = "2.8.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -36,6 +38,3 @@ hilt_compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 android-application = { id = "com.android.application", version.ref = "agp" }
 android_library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlin"}
-navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation"}
-hilt-android = { id = "dagger.hilt.android.plugin", version.ref = "hilt"}
