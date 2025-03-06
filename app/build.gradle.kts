@@ -58,6 +58,12 @@ dependencies {
     // splash
     implementation(libs.androidx.core.splashscreen)
 
+    // mokito
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation (libs.powermock.module.junit4)
+    testImplementation (libs.powermock.api.mockito2)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -66,4 +72,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+tasks.withType<Test> {
+    jvmArgs(
+        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+        "--add-opens", "java.base/java.util=ALL-UNNAMED"
+    )
 }
