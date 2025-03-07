@@ -4,23 +4,49 @@ A lightweight Android Gallery Application that allows users to view images and p
 
 ## 🎯 Features
 
-- ✅ Display images from local storage
-- ✅ Play videos from local storage
-- ✅ Efficient image loading with Glide
-- ✅ Proper state management using Flow & MediaResult Wrapper
-- ✅ Follows MVVM architecture and SOLID principles
+- 🖼️ Display images and videos.
+- 📂 Show albums present on the device.
+- 🌍 Supports multiple languages: **Arabic, English**.
+- 🌙☀️ Supports themes: **Dark and Light**.
 
 ## 🏗️ Tech Stack & Architecture
 
-The app is built using:
+This app uses Clean Architecture with MVVM for a maintainable, testable structure.
 
-- **MVVM (Model-View-ViewModel)** for a scalable and testable architecture
-- **SOLID principles** for clean and maintainable code
-- **Jetpack Components** (ViewBinding, DataBinding, ViewModel, Navigation)
-- **Kotlin Coroutines & Flow** 
-- **Glide** for efficient image rendering
-- **MediaStore API** for fetching media files
+* **Clean Architecture:** Core business logic is independent of UI/frameworks.
+* **MVVM:** Presentation layer separates UI (View) from logic (ViewModel).
 
+### Layers:
+
+- **Data Layer**: Retrieves media data from the device using queries on the Media Store.
+- **Domain Layer**: Contains interactors that map data models to UI models, ensuring separation of business logic and UI logic.
+- **Presentation Layer**: Includes View, ViewModel, Data Binding, and View Binding for seamless UI updates.
+
+## Libraries Used
+
+- 🏗️ **Dependency Injection**: Hilt
+- 🖼️ **Image Loading**: Glide
+- 🔀 **Navigation**: Jetpack Navigation Component
+- 🔄 **State Management**: StateFlow (to transfer data from the data layer to UI rendering)
+- 🔗 **Data Binding**: Used for binding UI data to data sources
+- 📂 **Media Store**: Used for querying media files from the device
+- 🧪 **Unit Testing**: PowerMockito (for ViewModel, Transformer, Repository testing)
+
+## Permissions
+
+- 🔑 Handles media access permissions dynamically based on API levels.
+
+  **API 33 or above:**
+  ```xml
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  ```
+  
+  **Below API 33:**
+  ```xml
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  ```
+  
 ## 📸 Screenshots
 | Album Screen | Album Details Screen |
 |-------------|----------------------|
