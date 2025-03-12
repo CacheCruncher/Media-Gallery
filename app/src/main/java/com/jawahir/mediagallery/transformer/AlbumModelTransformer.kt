@@ -1,8 +1,8 @@
 package com.jawahir.mediagallery.transformer
 
 import com.jawahir.mediagallery.data.MediaResult
-import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
 import com.jawahir.mediagallery.data.repository.MediaRepository
+import com.jawahir.mediagallery.ui.uimodels.AlbumUIModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -11,15 +11,15 @@ class AlbumModelTransformer @Inject constructor(private val repository: MediaRep
     fun getAllAlbums(): Flow<MediaResult<List<AlbumUIModel>>> {
         return repository.getAlbums().map { result ->
             when (result) {
-                is MediaResult.Loading -> MediaResult.Loading()
+                is MediaResult.Loading ->
+                    MediaResult.Loading(data = result.data?.map { AlbumUIModel(it) } ?: emptyList())
+
                 is MediaResult.Success -> {
-                    val uiModel = result.data?.map { AlbumUIModel(it) } ?: emptyList()
-                    MediaResult.Success(uiModel)
+                    MediaResult.Success(result.data?.map { AlbumUIModel(it) } ?: emptyList())
                 }
 
-                is MediaResult.Error -> MediaResult.Error(
-                    error = result.error ?: Throwable(message = "Unknown error")
-                )
+                is MediaResult.Error ->
+                    MediaResult.Error(error = result.error ?: Throwable(message = "Unknown error"))
             }
 
         }

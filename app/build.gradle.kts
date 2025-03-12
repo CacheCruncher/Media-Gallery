@@ -55,6 +55,9 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    // recycler view
+    implementation(libs.androidx.recyclerview)
+
     // splash
     implementation(libs.androidx.core.splashscreen)
 

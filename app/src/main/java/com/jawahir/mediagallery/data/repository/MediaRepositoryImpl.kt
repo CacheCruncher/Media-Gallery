@@ -121,13 +121,13 @@ class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val co
                         }
 
                         // Add normal albums
-                        addAll(albums.values.sortedBy { it.albumLastModified })
+                        addAll(albums.values.sortedBy { it.albumName })
                     }
 
                     emit(MediaResult.Success(result))
                 } ?: emit(MediaResult.Error(error = Exception()))
 
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             emit(MediaResult.Error(error = e))
         }
     }

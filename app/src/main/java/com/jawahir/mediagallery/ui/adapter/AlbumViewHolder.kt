@@ -9,7 +9,7 @@ import com.jawahir.mediagallery.ui.uimodels.MediaModels
 
 class AlbumViewHolder(
     private val binding: ItemAlbumBinding,
-    private val onItemClick: (Int) -> Unit
+    private val onItemClick: (MediaModels) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(album: MediaModels) {
@@ -22,17 +22,21 @@ class AlbumViewHolder(
                 .into(mediaThumbnailIv)
 
             model = album
+            executePendingBindings()
         }
     }
 
     init {
-        binding.apply {
-            root.setOnClickListener {
-                val position = layoutPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(position)
-                }
-            }
+        binding.root.setOnClickListener {
+            getItem()?.let(onItemClick)
         }
+    }
+
+    private fun getItem(): MediaModels? {
+        val adapter = bindingAdapter as? AlbumAdapter // Get the adapter, if it's the right type
+        val list = adapter?.currentList // Get the list of items from the adapter, if it exists
+        val position = bindingAdapterPosition // Get the position of this item
+
+        return list?.getOrNull(position) // Return the item at the position, or null if it's out of bounds
     }
 }
