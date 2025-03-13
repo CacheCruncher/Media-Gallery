@@ -210,7 +210,6 @@ class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val co
                             }
                             val mediaUri = ContentUris.withAppendedId(contentUri, id)
 
-                            val thumbnailUri = ContentUris.withAppendedId(mediaUri, id)
                             mediaList.add(
                                 MediaModel(
                                     id = id,
@@ -218,7 +217,6 @@ class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val co
                                     mediaName = displayName,
                                     mediaLastModified = dateModified,
                                     mediaUri = mediaUri,
-                                    mediaThumbnailUri = thumbnailUri,
                                     mediaType = mediaType
                                 )
                             )
@@ -234,6 +232,4 @@ class MediaRepositoryImpl @Inject constructor(@ApplicationContext private val co
             emit(MediaResult.Error(error = e))
         }
     }
-
-
 }

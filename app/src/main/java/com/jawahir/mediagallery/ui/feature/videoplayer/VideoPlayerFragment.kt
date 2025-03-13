@@ -17,9 +17,7 @@ class VideoPlayerFragment: Fragment(R.layout.fragment_video_player) {
             uiModel = args.albumDetailUIModel
             videoView.setVideoURI(args.albumDetailUIModel.getUri())
             videoView.setOnPreparedListener { mediaPlayer ->
-                mediaPlayer.setOnPreparedListener{ player ->
-                    player.start()
-                }
+                mediaPlayer.start()
             }
 
             playButton.setOnClickListener {

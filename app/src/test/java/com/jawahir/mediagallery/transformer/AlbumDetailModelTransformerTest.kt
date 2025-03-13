@@ -53,7 +53,6 @@ class AlbumDetailModelTransformerTest {
                     "Name 1",
                     1625097600L,
                     mock(Uri::class.java),
-                    mock(Uri::class.java),
                     MediaType.IMAGE
                 ),
                 MediaModel(
@@ -61,7 +60,6 @@ class AlbumDetailModelTransformerTest {
                     "Title 2",
                     "Name 2",
                     1625184000L,
-                    mock(Uri::class.java),
                     mock(Uri::class.java),
                     MediaType.VIDEO
                 )
@@ -80,7 +78,7 @@ class AlbumDetailModelTransformerTest {
         }
 
     @Test
-    fun `getMediaByAlbum emits Success with empty list when repository emits Success with null data`() =
+    fun `getMediaByAlbum emits Success with empty list when repository emits Success with empty data`() =
         runTest {
             `when`(repository.getMediaByAlbum(1L)).thenReturn(flowOf(MediaResult.Success(emptyList())))
 

@@ -11,6 +11,5 @@ data class MediaModel(
     val mediaName: String,
     val mediaLastModified: Long,
     val mediaUri: Uri,
-    val mediaThumbnailUri: Uri? = null,
     val mediaType: MediaType
 ):Parcelable
